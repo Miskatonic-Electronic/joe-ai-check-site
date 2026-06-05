@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Check</title>
+  <style>
+    :root {
+      --bg-1: #f7f4ea;
+      --bg-2: #d6e6f5;
+      --card: #fffdf7;
+      --text: #222222;
+      --yes: #1f7a52;
+      --yes-hover: #186142;
+      --no: #a63c3c;
+      --no-hover: #852f2f;
+      --accent: #0f3d5e;
+      --shadow: 0 14px 40px rgba(18, 30, 48, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(15, 61, 94, 0.14), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(166, 60, 60, 0.12), transparent 45%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      padding: 24px;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(15, 61, 94, 0.12);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.25;
+      color: var(--accent);
+      text-wrap: balance;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .yes {
+      background: var(--yes);
+    }
+
+    .yes:hover,
+    .yes:focus-visible {
+      background: var(--yes-hover);
+      filter: brightness(1.04);
+      outline: none;
+    }
+
+    .no {
+      background: var(--no);
+    }
+
+    .no:hover,
+    .no:focus-visible {
+      background: var(--no-hover);
+      filter: brightness(1.04);
+      outline: none;
+    }
+
+    .result {
+      min-height: 64px;
+      background: #f1f7fb;
+      border: 1px dashed rgba(15, 61, 94, 0.25);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .placeholder {
+      color: #5a6b78;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>have you learned to use AI yet, Joe?</h1>
+
+    <div class="actions">
+      <button class="yes" id="yesBtn">yes</button>
+      <button class="no" id="noBtn">no</button>
+    </div>
+
+    <section class="result" id="result" aria-live="polite">
+      <span class="placeholder">pick an option</span>
+    </section>
+  </main>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const result = document.getElementById("result");
+
+    yesBtn.addEventListener("click", () => {
+      result.textContent = "don't lie to me, Joe.";
+    });
+
+    noBtn.addEventListener("click", () => {
+      result.textContent = "another day wasted.";
+    });
+  </script>
+</body>
+</html>
